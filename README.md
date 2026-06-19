@@ -1,82 +1,86 @@
-# Project Name
+# AI Workplace Productivity Assistant
 
 ## Project Overview
 
-This project is designed to provide a practical solution for its intended use case by combining a clean user interface with efficient functionality. It demonstrates the implementation of modern development practices and showcases how different technologies can work together to deliver a reliable application.
+The AI Workplace Productivity Assistant is a modern SaaS web application that helps professionals automate everyday workplace tasks using AI. It combines a clean, Notion/Linear-inspired dashboard with practical AI tools for writing emails, summarizing meetings, planning tasks, conducting research, and conversing with an AI assistant — all in one workspace.
 
 ## Features
 
-* User-friendly and intuitive interface
-* Responsive design for different screen sizes
-* Efficient data processing and management
-* Secure and scalable architecture
-* Easy-to-maintain codebase
-* Modular structure for future enhancements
+- **Smart Email Composer** — draft professional emails by purpose, recipient, and tone
+- **Meeting Notes Summarizer** — turn transcripts into executive summaries and action items
+- **AI Task Planner** — generate schedules and an Eisenhower priority matrix
+- **Research Assistant** — extract key insights and facts from any topic or text
+- **AI Chatbot** — streaming conversational assistant with markdown support
+- **Dashboard** — at-a-glance stats, quick actions, and recent activity feed
+- **Light & dark mode** with a polished, accessible design system
+- **Fully responsive** layout for desktop, tablet, and mobile
+- **Responsible AI** — disclaimers, copy/regenerate controls, transparent outputs
 
 ## Tools Used
 
-The project was developed using the following tools and technologies:
-
-* **Programming Language:** (e.g., JavaScript, Python, Java, C#)
-* **Framework:** (e.g., React, Angular, Django, Flask, Spring Boot)
-* **Database:** (e.g., MySQL, PostgreSQL, MongoDB)
-* **Version Control:** Git and GitHub
-* **Code Editor:** Visual Studio Code (or preferred IDE)
-* **Package Manager:** npm / pip / Maven (as applicable)
+- **Language:** TypeScript
+- **Framework:** React 19 + TanStack Start (SSR, file-based routing, server functions)
+- **Styling:** Tailwind CSS v4 + shadcn/ui components
+- **Build Tool:** Vite 7
+- **AI:** Lovable AI Gateway (`google/gemini-3-flash-preview`) via the AI SDK
+- **Backend:** Lovable Cloud (Supabase) — auth, database, storage
+- **Validation:** Zod
+- **Package Manager:** Bun
+- **Version Control:** Git
 
 ## Setup Instructions
 
 ### Prerequisites
 
-Ensure you have the following installed:
-
-* Git
-* Required programming language runtime
-* Required package manager
+- [Bun](https://bun.sh) (or Node.js 20+ with npm)
+- Git
 
 ### Installation
 
-1. Clone the repository:
+```bash
+# 1. Clone the repository
+git clone <repository-url>
+cd <project-folder>
 
-   ```bash
-   git clone <repository-url>
-   ```
+# 2. Install dependencies
+bun install
 
-2. Navigate to the project directory:
+# 3. Start the dev server
+bun dev
+```
 
-   ```bash
-   cd <project-folder>
-   ```
+Open [http://localhost:8080](http://localhost:8080) in your browser.
 
-3. Install dependencies:
+### Environment
 
-   ```bash
-   # Example for Node.js
-   npm install
+The project uses Lovable Cloud, which auto-provisions the following variables in `.env`:
 
-   # Example for Python
-   pip install -r requirements.txt
-   ```
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
+- `VITE_SUPABASE_PROJECT_ID`
+- `LOVABLE_API_KEY` (server-side, for the AI Gateway)
 
-4. Start the application:
+## Project Structure
 
-   ```bash
-   # Example for Node.js
-   npm start
-
-   # Example for Python
-   python app.py
-   ```
-
-5. Open your browser and navigate to the local development URL (for example, `http://localhost:3000`) if applicable.
+```
+src/
+├── components/      # Reusable UI + layout (sidebar, theme, shadcn/ui)
+├── routes/          # File-based routes (dashboard, email, meetings, ...)
+│   └── api/         # HTTP endpoints (chat streaming)
+├── lib/             # AI server functions, activity tracking, utils
+├── integrations/    # Lovable Cloud client/server bindings
+└── styles.css       # Design tokens & theme
+```
 
 ## Future Improvements
 
-* Add additional features and functionality
-* Improve performance and optimization
-* Expand test coverage
-* Enhance security and accessibility
+- Persist activity & generated artifacts to the database (currently localStorage)
+- Team workspaces and sharing
+- Calendar and email provider integrations
+- Voice input for the meeting summarizer
+- Expanded test coverage and E2E tests
+- Accessibility audit (WCAG 2.2 AA)
 
 ## License
 
-This project is available under the appropriate license chosen by the project owner.
+Released under the MIT License.
